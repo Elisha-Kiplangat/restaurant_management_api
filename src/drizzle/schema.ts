@@ -26,13 +26,13 @@ export const menu_itemTable = pgTable("menu_item", {
 })
 // menu item table relations
 
-export const menuItemTableRelation = relations(MenuItemTable, ({ one, many }) => ({
-    restaurant: one(RestaurantTable, {
-        fields: [menu_ItemTable.restaurant_id],
+export const menuItemTableRelation = relations(menu_itemTable, ({ one, many }) => ({
+    restaurant: one(restaurantTable, {
+        fields: [menu_itemTable.restaurant_id],
         references: [restaurantTable.id],
     }),
     category: one(categoryTable, {
-        fields: [menu_ItemTable.category_id],
+        fields: [menu_itemTable.category_id],
         references: [categoryTable.id],
     }),
     orderMenuItems: many(order_menu_itemTable),
@@ -48,7 +48,7 @@ export const categoryTable: any = pgTable("category", {
 })
 
 //category table relations
-export const categoryTableRelation = relations(CategoryTable, ({ many }) => ({
+export const categoryTableRelation = relations(categoryTable, ({ many }) => ({
     menuItems: many(menu_itemTable),
 }));
 
@@ -72,7 +72,7 @@ export const restaurantTable = pgTable("restaurant", {
 
 export const restaurantTableRelation = relations(restaurantTable, ({ one, many }) => ({
     address: one(addressTable, {
-        fields: [restaurantTable.address_id],
+        fields: [restaurantTable.address],
         references: [addressTable.id],
     })
 }));
