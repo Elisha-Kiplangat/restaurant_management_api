@@ -59,7 +59,7 @@ export const restaurantTable = pgTable("restaurant", {
     name: varchar("name", { length: 255 }).notNull(),
     address: varchar("street_address", { length: 255 }).notNull(),
     zip: varchar("zip_code", { length: 255 }).notNull(),
-    CityId: integer("city_id").notNull().references(() => cityTable.id, { onDelete: "cascade" }),
+    cityId: integer("city_id").notNull().references(() => cityTable.id, { onDelete: "cascade" }),
     created_at: timestamp("createdAt").notNull(),
     updated_at: timestamp("updatedAt").notNull(),
     // menu_item: varchar("menu_item", { length: 255 }).notNull().references(() => menu_itemTable.name),
@@ -89,6 +89,19 @@ export const cityTable = pgTable("city", {
     
 })
 
+//city table relation
+
+export const cityTableRelation = relations(cityTable, ({one}) => ({
+    restaurant: one(restaurantTable, {
+        fields: [cityTable.id],
+        references: [restaurantTable.cityId]
+    }),
+    address: one(addressTable, {
+        fields: [cityTable.id],
+        references: [addressTable.cityId]
+    })
+}));
+
 //State table
 
 export const stateTable = pgTable("states", {
@@ -98,6 +111,12 @@ export const stateTable = pgTable("states", {
     // city: varchar("city", { length: 255 }).notNull().references(() => cityTable.name),
  
 })
+
+//state table relation
+
+export const stateTableRelation = relations(stateTable, ({one, many}) => ({
+    state: many(cityTable)
+}))
 
 //Address table
 
