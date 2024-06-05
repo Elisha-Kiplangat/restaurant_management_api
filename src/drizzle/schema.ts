@@ -18,39 +18,17 @@ export const menu_itemTable = pgTable("menu_item", {
     active: boolean("active").notNull(),
     createdAt: timestamp("created_at").notNull(),
     updatedAt: timestamp("updated_at").notNull(),
-    // category: integer("category").notNull().references(() => categoryTable.name, { onDelete: "cascade" }),
-    // restaurant: integer("restaurant").notNull().references(() => restaurantTable.name, { onDelete: "cascade" }),
-    // orderMenuItem: integer("order_menu_item").notNull().references(() => order_menu_itemTable.id, { onDelete: "cascade" }),
     
 
 })
-// menu item table relations
-
-export const menuItemTableRelation = relations(menu_itemTable, ({ one, many }) => ({
-    restaurant: one(restaurantTable, {
-        fields: [menu_itemTable.restaurant_id],
-        references: [restaurantTable.id],
-    }),
-    category: one(categoryTable, {
-        fields: [menu_itemTable.category_id],
-        references: [categoryTable.id],
-    }),
-    orderMenuItems: many(order_menu_itemTable),
-}));
 
 //Category table
 
 export const categoryTable: any = pgTable("category", {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 255 }).notNull(),
-    // menu_item: varchar("menu_item", { length: 255 }).notNull().references(() => menu_itemTable.name),
-    
+     
 })
-
-//category table relations
-export const categoryTableRelation = relations(categoryTable, ({ many }) => ({
-    menuItems: many(menu_itemTable),
-}));
 
 //Restaurant table
 
@@ -62,20 +40,9 @@ export const restaurantTable = pgTable("restaurant", {
     cityId: integer("city_id").notNull().references(() => cityTable.id, { onDelete: "cascade" }),
     created_at: timestamp("createdAt").notNull(),
     updated_at: timestamp("updatedAt").notNull(),
-    // menu_item: varchar("menu_item", { length: 255 }).notNull().references(() => menu_itemTable.name),
-    // orders: varchar("orders", { length: 255 }).notNull().references(() => orderTable.id),
-    // city: varchar("city", { length: 255 }).notNull().references(() => cityTable.name),
-    // restaurantOwner: varchar("restaurant_owner", { length: 255 }).notNull().references(() => restaurantOwnerTable.id),
-   })
+    
+})
 
-//restaurant table relation
-
-export const restaurantTableRelation = relations(restaurantTable, ({ one, many }) => ({
-    address: one(addressTable, {
-        fields: [restaurantTable.address],
-        references: [addressTable.id],
-    })
-}));
 
 //City table
 
@@ -83,24 +50,9 @@ export const cityTable = pgTable("city", {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 255 }).notNull(),
     stateId: integer("state_id").notNull().references(() => stateTable.id, { onDelete: "cascade" }),
-    // address: varchar("address", { length: 255 }).notNull().references(() => addressTable.id),
-    // state: varchar("state", { length: 255 }).notNull().references(() => stateTable.name),
-    // restaurant: varchar("restaurant", { length: 255 }).notNull().references(() => restaurantTable.id),
-    
+   
 })
 
-//city table relation
-
-export const cityTableRelation = relations(cityTable, ({one}) => ({
-    restaurant: one(restaurantTable, {
-        fields: [cityTable.id],
-        references: [restaurantTable.cityId]
-    }),
-    address: one(addressTable, {
-        fields: [cityTable.id],
-        references: [addressTable.cityId]
-    })
-}));
 
 //State table
 
@@ -108,15 +60,9 @@ export const stateTable = pgTable("states", {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 255 }).notNull(),
     code: varchar("code", { length: 255 }).notNull(),
-    // city: varchar("city", { length: 255 }).notNull().references(() => cityTable.name),
- 
+    
 })
 
-//state table relation
-
-export const stateTableRelation = relations(stateTable, ({one, many}) => ({
-    state: many(cityTable)
-}))
 
 //Address table
 
@@ -130,11 +76,10 @@ export const addressTable = pgTable("address", {
     cityId: integer("city_id").notNull().references(() => cityTable.id, { onDelete: "cascade" }),
     createdAt: timestamp("created_at").notNull(),
     updatedAt: timestamp("updated_at").notNull(),
-    // city: varchar("city", { length: 255 }).notNull().references(() => cityTable.name),
-    // users: varchar("users", { length: 255 }).notNull().references(() => userTable.id),
-    // orders: varchar("orders", { length: 255 }).notNull().references(() => orderTable.id),
     
 })
+
+// address table relation
 
 //Order menu item table
 
@@ -146,9 +91,7 @@ export const order_menu_itemTable = pgTable("order_menu_item", {
     itemPrice: real("item_price").notNull(),
     price: real("price").notNull(),
     comment: text("comment").notNull(),
-    // menu_item: varchar("menu_item", { length: 255 }).notNull().references(() => menu_itemTable.name),
-    // order: varchar("order", { length: 255 }).notNull().references(() => orderTable.id),
-
+    
 })
 
 //Orders table
@@ -167,13 +110,6 @@ export const orderTable = pgTable("orders", {
     comment: text("comment"),
     createdAt: timestamp("created_at").notNull(),
     updatedAt: timestamp("updated_at").notNull(),
-    // comments: varchar("comments", { length: 255 }).notNull().references(() => CommentTable.commentText),
-    // order_menu_item: varchar("order_menu_item", { length: 255 }).notNull().references(() => order_menu_itemTable.order_id),
-    // orderStatus: varchar("order_status", { length: 255 }).notNull().references(() => orderStatusTable.id),
-    // address: varchar("address", { length: 255 }).notNull().references(() => addressTable.id),
-    // driver: varchar("driver", { length: 255 }).notNull().references(() => driverTable.id),
-    // restaurant: varchar("restaurant", { length: 255 }).notNull().references(() => restaurantTable.id),
-    // users: varchar("users", { length: 255 }).notNull().references(() => userTable.id),
     
 })
 
@@ -182,10 +118,8 @@ export const orderTable = pgTable("orders", {
 export const orderStatusTable = pgTable("order_status", {
     id: serial("id").primaryKey(),
     orderId: integer("order_id").notNull().references(() => orderTable.id, { onDelete: "cascade" }),
-    statusCatalogId: varchar("status_catalog_id", { length: 255 }).notNull(),
+    statusCatalogId: integer("status_catalog_id").notNull().references(() => statusCatalogTable.id, { onDelete: "cascade" }),
     createdAt: timestamp("created_at").notNull(),
-    // orders: varchar("orders", { length: 255 }).notNull().references(() => orderTable.id),
-    // statusCatalog: varchar("status_catalog", { length: 255 }).notNull().references(() => statusCatalogTable.id),
     
 })
 
@@ -194,8 +128,7 @@ export const orderStatusTable = pgTable("order_status", {
 export const statusCatalogTable = pgTable("status_catalog", {
     id: serial("id").primaryKey(),
     name: text("name").notNull(),
-    // orderStatus: varchar("order_status", { length: 255 }).notNull().references(() => orderStatusTable.status_catalog_id),
-   
+    
 })
 
 //restaurant owner table
@@ -203,9 +136,7 @@ export const statusCatalogTable = pgTable("status_catalog", {
 export const restaurantOwnerTable = pgTable("restaurant_owner", {
     id: serial("id").primaryKey(),
     restaurantId: integer("restaurant_id").notNull().references(() => restaurantTable.id, { onDelete: "cascade" }),
-    ownerId: integer("owner_id").notNull().references(() => userTable.id, { onDelete: "cascade" }),
-    // restaurant: varchar("restaurant", { length: 255 }).notNull().references(() => restaurantTable.id),
-    // users: varchar("users", { length: 255 }).notNull().references(() => userTable.id),
+    ownerId: integer("owner_id").notNull()
     
 })
 
@@ -220,10 +151,7 @@ export const userTable = pgTable("user", {
     phone: varchar("phone", { length: 255 }).notNull(),
     createdAt: timestamp("created_at").notNull(),
     updatedAt: timestamp("updated_at").notNull(),
-    // address: varchar("address", { length: 255 }).notNull().references(() => addressTable.id),
-    // orders: varchar("orders", { length: 255 }).notNull().references(() => orderTable.id),
-    // restaurantOwner: varchar("restaurant_owner", { length: 255 }).notNull().references(() => restaurantOwnerTable.id),
-
+    
 })
 
 //Driver table
@@ -238,8 +166,6 @@ export const driverTable = pgTable("driver", {
     delivering: boolean("delivering").notNull(),
     createdAt: timestamp("created_at").notNull(),
     updatedAt: timestamp("updated_at").notNull(),
-    // orders: varchar("orders", { length: 255 }).notNull().references(() => statusCatalogTable.name),
-    // users: varchar("users", { length: 255 }).notNull().references(() => userTable.name),
     
 })
 
@@ -254,9 +180,143 @@ export const CommentTable = pgTable("comment", {
     isPraise: boolean("is_praise").notNull(),
     createdAt: timestamp("created_at").notNull(),
     updatedAt: timestamp("updated_at").notNull(),
-    // orders: varchar("orders", { length: 255 }).notNull().references(() => statusCatalogTable.name),
-    // users: varchar("users", { length: 255 }).notNull().references(() => userTable.name),
-
+    
 })
 
+//Relationships
+// menu item table relations
+
+export const menuItemTableRelation = relations(menu_itemTable, ({ one }) => ({
+    restaurant: one(restaurantTable, {
+        fields: [menu_itemTable.restaurant_id],
+        references: [restaurantTable.id],
+    }),
+    category: one(categoryTable, {
+        fields: [menu_itemTable.category_id],
+        references: [categoryTable.id],
+    }),
+}));
+// category table relations
+
+export const categoryTableRelation = relations(categoryTable, ({ one }) => ({
+    menu_item: one(menu_itemTable, {
+        fields: [categoryTable.id],
+        references: [menu_itemTable.category_id],
+    }),
+}));
+//restaurant table relation
+
+export const restaurantTableRelation = relations(restaurantTable, ({ one, many }) => ({
+    address: one(addressTable, {
+        fields: [restaurantTable.address],
+        references: [addressTable.id],
+    })
+}));
+//city table relation
+
+export const cityTableRelation = relations(cityTable, ({one}) => ({
+    restaurant: one(restaurantTable, {
+        fields: [cityTable.id],
+        references: [restaurantTable.cityId]
+    }),
+    address: one(addressTable, {
+        fields: [cityTable.id],
+        references: [addressTable.cityId]
+    })
+}));
+//state table relation
+
+export const stateTableRelation = relations(stateTable, ({one}) => ({
+    city: one(cityTable, {
+        fields: [stateTable.id],
+        references: [cityTable.stateId]
+    })
+}));
+
+//address table relation
+
+export const addressTableRelation = relations(addressTable, ({ one }) => ({
+    order: one(orderTable, {
+        fields: [addressTable.id],
+        references: [orderTable.deliveryAddressId],
+    })
+
+}));
+// order menu item table relation
+// order table relation
+
+export const orderTableRelation = relations(orderTable, ({ one }) => ({
+    order: one(order_menu_itemTable, {
+        fields: [orderTable.id],
+        references: [order_menu_itemTable.order_id],
+    }),
+    status: one(orderStatusTable, {
+        fields: [orderTable.id],
+        references: [orderStatusTable.orderId]
+
+    }),
+    comments: one(CommentTable, {
+        fields: [orderTable.id],
+        references: [CommentTable.orderId]
+    
+    })
+
+}));
+
+//status catalog relation
+
+export const statusCatalogTableRelation = relations(statusCatalogTable, ({ one }) => ({
+    status: one(orderStatusTable, {
+        fields: [statusCatalogTable.id],
+        references: [orderStatusTable.statusCatalogId]
+    })
+}));
+// restaurant owner relation
+// user table relation
+export const userTableRelation = relations(userTable, ({ one }) => ({
+    address: one(addressTable, {
+        fields: [userTable.id],
+        references: [addressTable.userId]
+    }),
+    order: one(orderTable, {
+        fields: [userTable.id],
+        references: [orderTable.userId]
+    }),
+    comment: one(CommentTable, {
+        fields: [userTable.id],
+        references: [CommentTable.userId]
+    }),
+    driver: one(driverTable, {
+        fields: [userTable.id],
+        references: [driverTable.userId]
+    }),
+    owner: one(restaurantOwnerTable, {
+        fields: [userTable.id],
+        references: [restaurantOwnerTable.ownerId]
+    })
+}));
+// driver table relation
+
+export const driverTableRelation = relations(driverTable, ({ one }) => ({
+    order: one(orderTable, {
+        fields: [driverTable.id],
+        references: [orderTable.driverId]
+    })
+}));
+
+
+
+
+
+
+export type MenuItemselect = typeof menu_itemTable.$inferSelect;
+export type restaurantselect = typeof restaurantTable.$inferSelect;
+export type cityselect = typeof cityTable.$inferSelect;
+export type orderselect = typeof orderTable.$inferSelect;
+export type categoryselect = typeof categoryTable.$inferSelect;
+export type stateselect = typeof stateTable.$inferSelect;
+export type addressselect = typeof addressTable.$inferSelect;
+export type status_catalogselect = typeof statusCatalogTable.$inferSelect;
+export type userselect = typeof userTable.$inferSelect;
+export type driverselect = typeof driverTable.$inferSelect;
 
