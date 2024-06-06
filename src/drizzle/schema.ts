@@ -83,7 +83,7 @@ export const addressTable = pgTable("address", {
 
 //Order menu item table
 
-export const order_menu_itemTable = pgTable("order_menu_item", {
+export const order_menu_itemTable: any = pgTable("order_menu_item", {
     id: serial("id").primaryKey(),
     order_id: integer("order_id").notNull().references(() => orderTable.id, { onDelete: "cascade" }),
     menu_item_id: integer("menu_item_id").notNull().references(() => menu_itemTable.id, { onDelete: "cascade" }),
@@ -96,7 +96,7 @@ export const order_menu_itemTable = pgTable("order_menu_item", {
 
 //Orders table
 
-export const orderTable = pgTable("orders", {
+export const orderTable: any = pgTable("orders", {
     id: serial("id").primaryKey(),
     restaurantId: integer("restaurant_id").notNull().references(() => restaurantTable.id, { onDelete: "cascade" }),
     estimatedDeliveryTime: timestamp("estimated_delivery_time").notNull(),

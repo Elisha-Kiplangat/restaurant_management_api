@@ -2,6 +2,7 @@ import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import 'dotenv/config'
 import { restaurantRouter } from './restaurant/restaurant.router'
+import {userRouter} from './users/users.router'
 
 const app = new Hono()
 
@@ -9,7 +10,9 @@ app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
-app.route('/restaurant', restaurantRouter)
+app.route('/', restaurantRouter)
+
+app.route('/', userRouter)
 
 
 serve({
