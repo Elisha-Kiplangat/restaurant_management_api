@@ -9,3 +9,35 @@ GET http://localhost:8000/restaurant
 ###
 
 GET http://localhost:8000/users
+
+###
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "email": "trial@gmail.com",
+    "password": "12342",
+    "firstname": "Trial",
+    "lastname": "Trial",
+    "phone": "+25471521254",
+    "createdAt": "2024-06-06T00:00:00.000Z",
+    "updatedAt": "2024-06-06T00:00:00.000Z"
+}
+
+###
+GET http://localhost:8000/orders
+
+###
+GET http://localhost:8000/states
+
+###
+
+POST http://localhost:8000/states
+Content-Type: application/json
+
+{
+    "name": "Kisumu",
+    "code": "20100",
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}

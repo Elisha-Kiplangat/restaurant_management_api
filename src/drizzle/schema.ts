@@ -310,13 +310,32 @@ export const driverTableRelation = relations(driverTable, ({ one }) => ({
 
 
 export type MenuItemselect = typeof menu_itemTable.$inferSelect;
+export type MenuItemInsert = typeof menu_itemTable.$inferInsert;
+
 export type restaurantselect = typeof restaurantTable.$inferSelect;
+export type restaurantInsert = typeof restaurantTable.$inferInsert;
+
 export type cityselect = typeof cityTable.$inferSelect;
+export type cityInsert = typeof cityTable.$inferInsert;
+
 export type orderselect = typeof orderTable.$inferSelect;
+export type orderInsert = typeof orderTable.$inferInsert;
+
 export type categoryselect = typeof categoryTable.$inferSelect;
+export type categoryInsert = typeof categoryTable.$inferInsert;
+
 export type stateselect = typeof stateTable.$inferSelect;
+export type stateInsert = typeof stateTable.$inferInsert;
+
 export type addressselect = typeof addressTable.$inferSelect;
+export type addressInsert = typeof addressTable.$inferInsert;
+
 export type status_catalogselect = typeof statusCatalogTable.$inferSelect;
+export type status_catalogInsert = typeof statusCatalogTable.$inferInsert;
+
 export type userselect = typeof userTable.$inferSelect;
+export type userInsert = typeof userTable.$inferInsert;
+
 export type driverselect = typeof driverTable.$inferSelect;
+export type driverInsert = typeof driverTable.$inferInsert;
 

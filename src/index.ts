@@ -3,6 +3,8 @@ import { Hono } from 'hono'
 import 'dotenv/config'
 import { restaurantRouter } from './restaurant/restaurant.router'
 import {userRouter} from './users/users.router'
+import {ordersRouter} from './orders/orders.router'
+import {stateRouter} from './state/state.router'
 
 const app = new Hono()
 
@@ -13,6 +15,10 @@ app.get('/', (c) => {
 app.route('/', restaurantRouter)
 
 app.route('/', userRouter)
+
+app.route('/', ordersRouter)
+
+app.route('/', stateRouter)
 
 
 serve({

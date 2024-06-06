@@ -1,5 +1,5 @@
 import db from "../drizzle/db"
-import { userselect } from "../drizzle/schema"
+import { userselect, userInsert, userTable } from "../drizzle/schema"
 
 
 export const userService = async (): Promise<userselect[]> => {
@@ -11,4 +11,9 @@ export const userService = async (): Promise<userselect[]> => {
         console.error('Error fetching restaurants:', error);
         throw error;
     }
+}
+
+export const addUserService = async (user: userInsert) => {
+    await db.insert(userTable).values(user)
+    return "User added successfully";
 }
