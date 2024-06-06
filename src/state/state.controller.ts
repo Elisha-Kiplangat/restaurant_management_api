@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { stateService, addStateService } from "./state.service";
+import { stateService, addStateService, updateStateService } from "./state.service";
 
 export const stateController = async (c: Context) => {
     try{
@@ -12,7 +12,7 @@ export const stateController = async (c: Context) => {
     
 }
 
-//add user
+//add state
 
 export const addState = async (c: Context) => {
     try {
@@ -21,6 +21,17 @@ export const addState = async (c: Context) => {
 
         if (!createdState) return c.text("User not created", 404);
         return c.json({ msg: createdState }, 201);
+
+    } catch (error: any) {
+        return c.json({ error: error?.message }, 400)
+    }
+}
+
+// update state
+
+export const updateState = async (c: Context) => {
+    try {
+        
 
     } catch (error: any) {
         return c.json({ error: error?.message }, 400)

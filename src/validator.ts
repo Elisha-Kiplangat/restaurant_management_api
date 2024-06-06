@@ -14,7 +14,5 @@ export const userSchema = z.object({
 
 export const stateSchema = z.object({
     name: z.string(),
-    code: z.string(),
-    createdAt: z.date(),
-    updatedAt: z.date()
+    code: z.string()
 })

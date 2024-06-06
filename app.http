@@ -37,7 +37,12 @@ Content-Type: application/json
 
 {
     "name": "Kisumu",
-    "code": "20100",
-    "createdAt": "2024-06-06",
-    "updatedAt": "2024-06-06"
+    "code": "20100"
 }
+
+###
+GET http://localhost:8000/menuItem
+
+###
+
+GET http://localhost:8000/category

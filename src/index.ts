@@ -5,6 +5,8 @@ import { restaurantRouter } from './restaurant/restaurant.router'
 import {userRouter} from './users/users.router'
 import {ordersRouter} from './orders/orders.router'
 import {stateRouter} from './state/state.router'
+import {menuItemRouter} from './menuItem/menuItem.router'
+import {categoryRouter} from './category/category.router'
 
 const app = new Hono()
 
@@ -19,6 +21,10 @@ app.route('/', userRouter)
 app.route('/', ordersRouter)
 
 app.route('/', stateRouter)
+
+app.route('/', menuItemRouter)
+
+app.route('/', categoryRouter)
 
 
 serve({
