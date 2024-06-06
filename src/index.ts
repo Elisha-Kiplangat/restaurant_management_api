@@ -1,21 +1,20 @@
-import db from "./drizzle/db";
-import { eq,gt,like } from "drizzle-orm";
-import { restaurantTable, categoryTable, orderTable, menu_itemTable, cityTable } from "./drizzle/schema";
-import { MenuItemselect, restaurantselect, cityselect, orderselect, categoryselect, stateselect, addressselect, status_catalogselect, userselect , driverselect } from "./drizzle/schema";
+import { serve } from '@hono/node-server'
+import { Hono } from 'hono'
+import 'dotenv/config'
+import { restaurantRouter } from './restaurant/restaurant.router'
 
-//query
-const getMenu = async (): Promise<MenuItemselect[] | null> => {
-    return await db.query.menu_itemTable.findMany();
-}
+const app = new Hono()
+
+app.get('/', (c) => {
+  return c.text('Hello Hono!')
+})
+
+app.route('/restaurant', restaurantRouter)
 
 
-// query 2
-const getRest = async (): Promise<restaurantselect[] | null> => {
-    return await db.select().from(restaurantTable);
-}
+serve({
+  fetch: app.fetch,
+  port: parseInt(process.env.PORT || '3000')
+})
 
-async function main() {
-    console.log(await getMenu());
-    // console.log(await getRest());
-}
-main();
+console.log(`Server is running on port ${process.env.PORT}`)
