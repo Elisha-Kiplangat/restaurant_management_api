@@ -7,6 +7,7 @@ import {ordersRouter} from './orders/orders.router'
 import {stateRouter} from './state/state.router'
 import {menuItemRouter} from './menuItem/menuItem.router'
 import {categoryRouter} from './category/category.router'
+import {commentRouter} from './comments/comments.router'
 
 const app = new Hono()
 
@@ -25,6 +26,8 @@ app.route('/', stateRouter)
 app.route('/', menuItemRouter)
 
 app.route('/', categoryRouter)
+
+app.route('/', commentRouter)
 
 
 serve({

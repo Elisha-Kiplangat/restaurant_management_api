@@ -45,4 +45,23 @@ GET http://localhost:8000/menuItem
 
 ###
 
-GET http://localhost:8000/category
+GET http://localhost:8000/category 
+
+
+###
+GET http://localhost:8000/comments
+
+###
+
+POST http://localhost:8000/comments
+Content-Type: application/json
+
+{
+    "orderId": 1,
+    "userId": 2,
+    "commentText": "Great",
+    "isComplaint": true,
+    "isPraise": false,
+    "createdAt": 06 06 2024,
+    "updatedAt": 06 06 2024
+}

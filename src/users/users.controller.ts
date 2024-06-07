@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { userService, addUserService } from "./users.service";
+import { userService, addUserService,updateUserService, deleteUserService } from "./users.service";
 
 export const userController = async (c: Context) => {
     try{
@@ -26,3 +26,12 @@ export const addUser = async (c: Context) => {
         return c.json({ error: error?.message }, 400)
     }
 }
+
+//delete
+// export const updateUser = async (c:Context) => {
+//     try{
+
+//     } catch(error: any){
+//         return c.json({error:error?.message}, 400)
+//     }
+// }

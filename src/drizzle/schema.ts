@@ -339,3 +339,5 @@ export type userInsert = typeof userTable.$inferInsert;
 export type driverselect = typeof driverTable.$inferSelect;
 export type driverInsert = typeof driverTable.$inferInsert;
 
+export type commentselect = typeof CommentTable.$inferSelect;
+export type commentInsert = typeof CommentTable.$inferInsert;
