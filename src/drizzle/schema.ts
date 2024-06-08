@@ -142,7 +142,7 @@ export const restaurantOwnerTable = pgTable("restaurant_owner", {
 
 //User table
 
-export const userTable = pgTable("user", {
+export const userTable = pgTable("users", {
     id: serial("id").primaryKey(),
     email: varchar("email", { length: 255 }).notNull(),
     password: varchar("password", { length: 255 }).notNull(),

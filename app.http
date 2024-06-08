@@ -20,8 +20,8 @@ Content-Type: application/json
     "firstname": "Trial",
     "lastname": "Trial",
     "phone": "+25471521254",
-    "createdAt": "2024-06-06T00:00:00.000Z",
-    "updatedAt": "2024-06-06T00:00:00.000Z"
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
 }
 ###
 PUT http://localhost:8000/users/1
@@ -71,6 +71,24 @@ Content-Type: application/json
     "commentText": "Great",
     "isComplaint": true,
     "isPraise": false,
+    "createdAt": 06 06 2024,
+    "updatedAt": 06 06 2024
+}
+###
+GET http://localhost:8000/addresses
+
+###
+
+POST http://localhost:8000/addresses
+Content-Type: application/json
+
+{
+    "streetAddress1": 1,
+    "streetAddress2": 2,
+    "zipCode": 20210,
+    "deliveryInstructions": "free",
+    "userId": 2,
+    "cityId": 3,
     "createdAt": 06 06 2024,
     "updatedAt": 06 06 2024
 }

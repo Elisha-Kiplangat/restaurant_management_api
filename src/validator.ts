@@ -7,9 +7,7 @@ export const userSchema = z.object({
     password: z.string(),
     firstname: z.string(),
     lastname: z.string(),
-    phone: z.string(),
-    createdAt: z.date(),
-    updatedAt: z.date()
+    phone: z.string()
 })
 
 export const stateSchema = z.object({
@@ -25,6 +23,17 @@ export const commentSchema = z.object({
     commentText: z.string(),
     isComplaint: z.boolean(),
     isPraise: z.boolean(),
+    createdAt: z.date(),
+    updatedAt: z.date()
+})
+
+export const addressSchema = z.object({
+    streetAddress1: z.string(),
+    streetAddress2: z.string(),
+    zipCode: z.number(),
+    deliveryInstructions: z.string(),
+    userId: z.number(),
+    cityId: z.number(),
     createdAt: z.date(),
     updatedAt: z.date()
 })
