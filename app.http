@@ -3,11 +3,12 @@ GET http://localhost:8000/
 
 ###
 
+#---- Restaurant---#
 ###
 GET http://localhost:8000/restaurant
 
+#---- Users---#
 ###
-
 GET http://localhost:8000/users
 
 ###
@@ -15,27 +16,29 @@ POST http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "email": "trial@gmail.com",
-    "password": "12342",
-    "firstname": "Trial",
-    "lastname": "Trial",
+    "email": "example@gmail.com",
+    "password": "example",
+    "firstName": "John",
+    "lastName": "Doe",
     "phone": "+25471521254",
     "createdAt": "2024-06-06",
     "updatedAt": "2024-06-06"
 }
 ###
-PUT http://localhost:8000/users/1
+PUT http://localhost:8000/users/8
 Content-Type: application/json
 
 {
-    "fullname": "Alexa"
+    "firstName": "Alexa"
 }
 ###
-DELETE http://localhost:8000/users/"1"
+DELETE http://localhost:8000/users/7
 
+#---- Orders---#
 ###
 GET http://localhost:8000/orders
 
+#---- States---#
 ###
 GET http://localhost:8000/states
 
@@ -50,13 +53,24 @@ Content-Type: application/json
 }
 
 ###
+PUT http://localhost:8000/states/1
+Content-Type: application/json
+
+{
+    "name": "Nakuru"
+}
+###
+DELETE http://localhost:8000/states/"1"
+
+#---- Menu item---#
+###
 GET http://localhost:8000/menuItem
 
+#---- Category---#
 ###
-
 GET http://localhost:8000/category 
 
-
+#---- Comments---#
 ###
 GET http://localhost:8000/comments
 
@@ -71,9 +85,20 @@ Content-Type: application/json
     "commentText": "Great",
     "isComplaint": true,
     "isPraise": false,
-    "createdAt": 06 06 2024,
-    "updatedAt": 06 06 2024
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
 }
+###
+PUT http://localhost:8000/comments/1
+Content-Type: application/json
+
+{
+    "fullname": "Alexa"
+}
+###
+DELETE http://localhost:8000/comments/"1"
+
+#---- Address---#
 ###
 GET http://localhost:8000/addresses
 
@@ -89,6 +114,16 @@ Content-Type: application/json
     "deliveryInstructions": "free",
     "userId": 2,
     "cityId": 3,
-    "createdAt": 06 06 2024,
-    "updatedAt": 06 06 2024
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
 }
+
+###
+PUT http://localhost:8000/addresses/1
+Content-Type: application/json
+
+{
+    "fullname": "Alexa"
+}
+###
+DELETE http://localhost:8000/addresses/"1"

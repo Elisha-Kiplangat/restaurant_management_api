@@ -25,8 +25,19 @@ export const addUserService = async (user: userInsert) => {
 }
 
 export const updateUserService = async (id: number, user: userInsert) => {
+    try {
+        // First, check if the user with the given ID exists
+        const searchedUser = await oneUserService(id);
+        if (!searchedUser) {
+            // If user not found, return false to indicate failure
+            return false;
+    }
     await db.update(userTable).set(user).where(eq(userTable.id, id));
-    return "User update successfully";
+    return "User updated successfully";
+} catch (error) {
+        // Handle any errors
+        throw new Error("Failed to update user: ");
+    }
 }
 
 export const deleteUserService = async (id: number) => {

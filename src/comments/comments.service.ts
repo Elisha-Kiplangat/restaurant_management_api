@@ -13,6 +13,11 @@ export const commentService = async (): Promise<commentselect[]> => {
         throw error;
     }
 }
+export const oneCommentService = async (id: number): Promise<commentselect | undefined> => {
+    return await db.query.CommentTable.findFirst({
+        where: eq(CommentTable.id, id)
+    })
+}
 
 export const addCommentService = async (comment: commentInsert) => {
     await db.insert(CommentTable).values(comment)

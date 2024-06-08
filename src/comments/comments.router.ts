@@ -1,5 +1,5 @@
 import {Hono} from 'hono'
-import {commentController, addComment} from './comments.controller'
+import {commentController, addComment, updateCommentController, deleteCommentController} from './comments.controller'
 import { zValidator } from "@hono/zod-validator";
 import { commentSchema } from "../validator";
 
@@ -12,5 +12,9 @@ commentRouter.post("comments", zValidator('json', commentSchema, (result, c) => 
         return c.json(result.error, 400)
     }
 }), addComment)
+
+userRouter.put("/comments:id", updateCommentController)
+
+userRouter.delete("/comments/:id", deleteCommentController)
 
 export default commentRouter;

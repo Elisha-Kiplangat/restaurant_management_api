@@ -5,9 +5,15 @@ import { number, z } from 'zod'
 export const userSchema = z.object({
     email: z.string(),
     password: z.string(),
-    firstname: z.string(),
-    lastname: z.string(),
-    phone: z.string()
+    firstName: z.string(),
+    lastName: z.string(),
+    phone: z.string(),
+    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for createdAt',
+    }).transform((val) => new Date(val)),
+    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updatedAt',
+    }).transform((val) => new Date(val))
 })
 
 export const stateSchema = z.object({
@@ -23,8 +29,12 @@ export const commentSchema = z.object({
     commentText: z.string(),
     isComplaint: z.boolean(),
     isPraise: z.boolean(),
-    createdAt: z.date(),
-    updatedAt: z.date()
+    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for createdAt',
+    }).transform((val) => new Date(val)),
+    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updatedAt',
+    }).transform((val) => new Date(val))
 })
 
 export const addressSchema = z.object({
@@ -34,6 +44,10 @@ export const addressSchema = z.object({
     deliveryInstructions: z.string(),
     userId: z.number(),
     cityId: z.number(),
-    createdAt: z.date(),
-    updatedAt: z.date()
+    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for createdAt',
+    }).transform((val) => new Date(val)),
+    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updatedAt',
+    }).transform((val) => new Date(val))
 })

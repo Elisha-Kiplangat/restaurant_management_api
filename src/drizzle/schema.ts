@@ -1,5 +1,6 @@
-import { pgTable, text, varchar, serial, boolean, real, timestamp, primaryKey, integer, pgEnum } from 'drizzle-orm/pg-core';
+import { pgTable, text, varchar, serial, boolean, real, date, primaryKey, integer } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
+import { datetime } from 'drizzle-orm/mysql-core';
 
 
 
@@ -16,8 +17,8 @@ export const menu_itemTable = pgTable("menu_item", {
     ingredients: text("ingredients").notNull(),
     price: real("price").notNull(),
     active: boolean("active").notNull(),
-    createdAt: timestamp("created_at").notNull(),
-    updatedAt: timestamp("updated_at").notNull(),
+    createdAt: date("created_at").notNull(),
+    updatedAt: date("updated_at").notNull(),
     
 
 })
@@ -38,8 +39,8 @@ export const restaurantTable = pgTable("restaurant", {
     address: varchar("street_address", { length: 255 }).notNull(),
     zip: varchar("zip_code", { length: 255 }).notNull(),
     cityId: integer("city_id").notNull().references(() => cityTable.id, { onDelete: "cascade" }),
-    created_at: timestamp("createdAt").notNull(),
-    updated_at: timestamp("updatedAt").notNull(),
+    created_at: date("createdAt").notNull(),
+    updated_at: date("updatedAt").notNull(),
     
 })
 
@@ -74,8 +75,8 @@ export const addressTable = pgTable("address", {
     deliveryInstructions: text("delivery_instructions").notNull(),
     userId: integer("user_id").notNull().references(() => userTable.id, { onDelete: "cascade" }),
     cityId: integer("city_id").notNull().references(() => cityTable.id, { onDelete: "cascade" }),
-    createdAt: timestamp("created_at").notNull(),
-    updatedAt: timestamp("updated_at").notNull(),
+    createdAt: date("created_at").notNull(),
+    updatedAt: date("updated_at").notNull()
     
 })
 
@@ -99,8 +100,8 @@ export const order_menu_itemTable: any = pgTable("order_menu_item", {
 export const orderTable: any = pgTable("orders", {
     id: serial("id").primaryKey(),
     restaurantId: integer("restaurant_id").notNull().references(() => restaurantTable.id, { onDelete: "cascade" }),
-    estimatedDeliveryTime: timestamp("estimated_delivery_time").notNull(),
-    actualDeliveryTime: timestamp("actual_delivery_time"),
+    estimatedDeliveryTime: date("estimated_delivery_time").notNull(),
+    actualDeliveryTime: date("actual_delivery_time"),
     deliveryAddressId: integer("delivery_address_id").notNull().references(() => addressTable.id, { onDelete: "cascade" }),
     userId: integer("user_id").notNull().references(() => userTable.id, { onDelete: "cascade" }),
     driverId: integer("driver_id").references(() => driverTable.id, { onDelete: "cascade" }),
@@ -108,8 +109,8 @@ export const orderTable: any = pgTable("orders", {
     discount: real("discount").notNull(),
     finalPrice: real("final_price").notNull(),
     comment: text("comment"),
-    createdAt: timestamp("created_at").notNull(),
-    updatedAt: timestamp("updated_at").notNull(),
+    createdAt: date("created_at").notNull(),
+    updatedAt: date("updated_at").notNull(),
     
 })
 
@@ -119,7 +120,7 @@ export const orderStatusTable = pgTable("order_status", {
     id: serial("id").primaryKey(),
     orderId: integer("order_id").notNull().references(() => orderTable.id, { onDelete: "cascade" }),
     statusCatalogId: integer("status_catalog_id").notNull().references(() => statusCatalogTable.id, { onDelete: "cascade" }),
-    createdAt: timestamp("created_at").notNull(),
+    createdAt: date("created_at").notNull(),
     
 })
 
@@ -149,8 +150,8 @@ export const userTable = pgTable("users", {
     firstName: varchar("first_name", { length: 255 }).notNull(),
     lastName: varchar("last_name", { length: 255 }).notNull(),
     phone: varchar("phone", { length: 255 }).notNull(),
-    createdAt: timestamp("created_at").notNull(),
-    updatedAt: timestamp("updated_at").notNull(),
+    createdAt: date("created_at").notNull(),
+    updatedAt: date("updated_at").notNull(),
     
 })
 
@@ -164,8 +165,8 @@ export const driverTable = pgTable("driver", {
     userId: integer("user_id").notNull().references(() => userTable.id, { onDelete: "cascade" }),
     oline: boolean("online").notNull(),
     delivering: boolean("delivering").notNull(),
-    createdAt: timestamp("created_at").notNull(),
-    updatedAt: timestamp("updated_at").notNull(),
+    createdAt: date("created_at").notNull(),
+    updatedAt: date("updated_at").notNull(),
     
 })
 
@@ -178,8 +179,8 @@ export const CommentTable = pgTable("comment", {
     commentText: text("comment_text").notNull(),
     isComplaint: boolean("is_complaint").notNull(),
     isPraise: boolean("is_praise").notNull(),
-    createdAt: timestamp("created_at").notNull(),
-    updatedAt: timestamp("updated_at").notNull(),
+    createdAt: date("created_at").notNull(),
+    updatedAt: date("updated_at").notNull(),
     
 })
 
