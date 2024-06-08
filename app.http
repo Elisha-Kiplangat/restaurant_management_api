@@ -23,6 +23,15 @@ Content-Type: application/json
     "createdAt": "2024-06-06T00:00:00.000Z",
     "updatedAt": "2024-06-06T00:00:00.000Z"
 }
+###
+PUT http://localhost:8000/users/1
+Content-Type: application/json
+
+{
+    "fullname": "Alexa"
+}
+###
+DELETE http://localhost:8000/users/"1"
 
 ###
 GET http://localhost:8000/orders

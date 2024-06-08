@@ -2,7 +2,7 @@ import db from "../drizzle/db"
 import { userselect, userInsert, userTable } from "../drizzle/schema"
 import {eq} from "drizzle-orm";
 
-
+// all users
 export const userService = async (): Promise<userselect[]> => {
     try {
         const users = await db.query.userTable.findMany();
@@ -12,6 +12,11 @@ export const userService = async (): Promise<userselect[]> => {
         console.error('Error fetching restaurants:', error);
         throw error;
     }
+}
+export const oneUserService = async (id: number): Promise<userselect | undefined> => {
+    return await db.query.userTable.findFirst({
+        where: eq(userTable.id, id)
+    })
 }
 
 export const addUserService = async (user: userInsert) => {
