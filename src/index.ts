@@ -14,6 +14,7 @@ import { orderMenuItemRouter } from './orderMenuItem/orderMenuItem.router'
 import { statusCatalogRouter } from './statusCatalog/statusCatalog.router'
 import { driverRouter } from './driver/driver.router'
 import { restaurantOwnerRouter } from './restaurantOwner/restaurantOwner.router'
+import { orderStatusRouter } from './orderStatus/orderStatus.router'
 
 const app = new Hono()
 
@@ -46,6 +47,8 @@ app.route('/', statusCatalogRouter)
 app.route('/', driverRouter)
 
 app.route('/', restaurantOwnerRouter)
+
+app.route('/', orderStatusRouter)
 
 
 serve({
