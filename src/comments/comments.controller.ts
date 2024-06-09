@@ -11,10 +11,20 @@ export const commentController = async (c: Context) => {
     }
     
 }
+export const oneCommentController = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    const order = await oneCommentService(id);
+    if (order == undefined) {
+        return c.text("order not found", 404);
+    }
+    return c.json(order, 200);
+}
 
 //add user
 
-export const addComment: any = async (c: Context) => {
+export const addCommentController: any = async (c: Context) => {
     try {
         const comment = await c.req.json();
         const createdComment = await addCommentService(comment);
@@ -47,7 +57,7 @@ export const updateCommentController = async (c: Context) => {
     }
 }
 
-export const deleteUserController = async (c: Context) => {
+export const deleteCommentController = async (c: Context) => {
     const id = Number(c.req.param("id"));
     if (isNaN(id)) return c.text("Invalid ID", 400);
 

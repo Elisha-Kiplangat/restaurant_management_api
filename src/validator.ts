@@ -88,3 +88,18 @@ export const orderSchema = z.object({
     }).transform((val) => new Date(val))
 })
 
+export const menuItemSchema = z.object({
+    name: z.string(),
+    restaurant_id: z.number(),
+    category_id: z.number(),
+    description: z.string(),
+    ingredients: z.string(),
+    price: z.number(),
+    active: z.boolean(),
+    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for createdAt',
+    }).transform((val) => new Date(val)),
+    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updatedAt',
+    }).transform((val) => new Date(val))
+})

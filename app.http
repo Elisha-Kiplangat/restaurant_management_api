@@ -116,7 +116,34 @@ DELETE http://localhost:8000/states/"1"
 
 #---- Menu item---#
 ###
-GET http://localhost:8000/menuItem
+GET http://localhost:8000/menuItems
+
+###
+
+POST http://localhost:8000/menuItems
+Content-Type: application/json
+
+{
+    "name": "pizza",
+    "restaurant_id": 2,
+    "category_id": 1,
+    "description": "medium size pizza",
+    "ingredients": "flour, cheese, tomato",
+    "price": 1000,
+    "active": true,
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+
+###
+PUT http://localhost:8000/menuItems/1
+Content-Type: application/json
+
+{
+    "name": "burger"
+}
+###
+DELETE http://localhost:8000/menuItems/"1"
 
 #---- Category---#
 ###
@@ -145,7 +172,7 @@ PUT http://localhost:8000/comments/1
 Content-Type: application/json
 
 {
-    "fullname": "Alexa"
+    "commentsText": "Good"
 }
 ###
 DELETE http://localhost:8000/comments/"1"
