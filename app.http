@@ -116,11 +116,11 @@ DELETE http://localhost:8000/states/"1"
 
 #---- Menu item---#
 ###
-GET http://localhost:8000/menuItems
+GET http://localhost:8000/menu-items
 
 ###
 
-POST http://localhost:8000/menuItems
+POST http://localhost:8000/menu-items
 Content-Type: application/json
 
 {
@@ -136,14 +136,17 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8000/menuItems/1
+PUT http://localhost:8000/menu-items/5
 Content-Type: application/json
 
 {
-    "name": "burger"
+    "name": "pizza",
+    "description": "medium size pizza",
+    "ingredients": "flour, cheese, tomato",
+    "price": 1000
 }
 ###
-DELETE http://localhost:8000/menuItems/"1"
+DELETE http://localhost:8000/menu-items/"1"
 
 #---- Category---#
 ###
