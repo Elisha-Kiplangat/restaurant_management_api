@@ -278,3 +278,55 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/order-menu-items/5
+
+#---- Status catalog---#
+###
+GET http://localhost:8000/status-catalogs 
+###
+
+POST http://localhost:8000/status-catalogs
+Content-Type: application/json
+
+{
+    "name": "Pending"
+}
+
+###
+PUT http://localhost:8000/status-catalogs/1
+Content-Type: application/json
+
+{
+    "name": "Delivered"
+}
+###
+DELETE http://localhost:8000/status-catalogs/2
+
+#---- driver---#
+###
+GET http://localhost:8000/drivers 
+###
+
+POST http://localhost:8000/drivers
+Content-Type: application/json
+
+{
+    "carMake": "Toyota",
+    "carModel": "Vitz",
+    "carYear": 2010,
+    "userId": 2,
+    "online": true,
+    "delivering": true,
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+
+###
+PUT http://localhost:8000/drivers/1
+Content-Type: application/json
+
+{
+    "online": false,
+    "delivering": false
+}
+###
+DELETE http://localhost:8000/drivers/2

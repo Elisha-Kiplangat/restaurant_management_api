@@ -121,3 +121,22 @@ export const orderMenuItemSchema = z.object({
     price: z.number(),
     comment: z.string()
 })
+
+export const statusCatalogSchema = z.object({
+    name: z.string()
+})
+
+export const driverSchema = z.object({
+    carMake: z.string(),
+    carModel: z.string(),
+    carYear: z.number(),
+    userId: z.number(),
+    online: z.boolean(),
+    delivering: z.boolean(),
+    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for createdAt',
+    }).transform((val) => new Date(val)),
+    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updatedAt',
+    }).transform((val) => new Date(val))
+})

@@ -162,7 +162,7 @@ export const driverTable = pgTable("driver", {
     carModel: varchar("car_model", { length: 255 }).notNull(),
     carYear: varchar("car_year", { length: 255 }).notNull(),
     userId: integer("user_id").notNull().references(() => userTable.id, { onDelete: "cascade" }),
-    oline: boolean("online").notNull(),
+    online: boolean("online").notNull(),
     delivering: boolean("delivering").notNull(),
     createdAt: date("created_at").notNull(),
     updatedAt: date("updated_at").notNull(),

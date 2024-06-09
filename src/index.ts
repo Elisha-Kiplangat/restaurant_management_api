@@ -11,6 +11,7 @@ import { commentRouter } from './comments/comments.router'
 import { addressRouter } from './address/address.router'
 import { cityRouter } from './city/city.router'
 import { orderMenuItemRouter } from './orderMenuItem/orderMenuItem.router'
+import { statusCatalogRouter } from './statusCatalog/statusCatalog.router'
 
 const app = new Hono()
 
@@ -37,6 +38,8 @@ app.route('/', addressRouter)
 app.route('/', cityRouter)
 
 app.route('/', orderMenuItemRouter)
+
+app.route('/', statusCatalogRouter)
 
 
 serve({
