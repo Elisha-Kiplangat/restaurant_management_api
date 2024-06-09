@@ -344,3 +344,9 @@ export type commentInsert = typeof CommentTable.$inferInsert;
 
 export type orderMenuItemselect = typeof order_menu_itemTable.$inferSelect;
 export type orderMenuItemInsert = typeof order_menu_itemTable.$inferInsert;
+
+export type orderStatusSelect = typeof orderStatusTable.$inferSelect;
+export type orderStatusInsert = typeof orderStatusTable.$inferInsert;
+
+export type restaurantOwnerselect = typeof restaurantOwnerTable.$inferSelect;
+export type restaurantOwnerInsert = typeof restaurantOwnerTable.$inferInsert;

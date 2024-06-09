@@ -321,7 +321,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8000/drivers/1
+PUT http://localhost:8000/drivers/5
 Content-Type: application/json
 
 {
@@ -329,4 +329,52 @@ Content-Type: application/json
     "delivering": false
 }
 ###
-DELETE http://localhost:8000/drivers/2
+DELETE http://localhost:8000/drivers/5
+
+#---- Restaurant owner---#
+###
+GET http://localhost:8000/restaurant-owners 
+###
+
+POST http://localhost:8000/restaurant-owners
+Content-Type: application/json
+
+{
+    "restaurantId": 2,
+    "ownerId": 2
+}
+
+###
+PUT http://localhost:8000/restaurant-owners/5
+Content-Type: application/json
+
+{
+    "ownerId": 3
+}
+###
+DELETE http://localhost:8000/restaurant-owners/2
+
+#---- Order status---#
+###
+GET http://localhost:8000/order-status 
+###
+
+POST http://localhost:8000/order-status
+Content-Type: application/json
+
+{
+    "orderId": 2,
+    "statusCatalogId": 2,
+    "createdAt": "2024-06-06"
+}
+
+###
+PUT http://localhost:8000/order-status/5
+Content-Type: application/json
+
+{
+    "createdAt": "2024-06-06"
+}
+###
+DELETE http://localhost:8000/order-status/2
+

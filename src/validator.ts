@@ -140,3 +140,16 @@ export const driverSchema = z.object({
         message: 'Invalid date format for updatedAt',
     }).transform((val) => new Date(val))
 })
+
+export const restaurantOwnerSchema = z.object({
+    restaurantId: z.number(),
+    ownerId: z.number()
+})
+
+export const orderStatusSchema = z.object({
+    orderId: z.number(),
+    statusCatalogId: z.number(),
+    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for createdAt',
+    }).transform((val) => new Date(val))
+})
