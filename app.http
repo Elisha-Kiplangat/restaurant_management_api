@@ -88,7 +88,7 @@ Content-Type: application/json
     "price": "1200"
 }
 ###
-DELETE http://localhost:8000/orders/"1"
+DELETE http://localhost:8000/orders/1
 
 #---- States---#
 ###
@@ -112,7 +112,7 @@ Content-Type: application/json
     "name": "Nakuru"
 }
 ###
-DELETE http://localhost:8000/states/"1"
+DELETE http://localhost:8000/states/1
 
 #---- Menu item---#
 ###
@@ -146,7 +146,7 @@ Content-Type: application/json
     "price": 1000
 }
 ###
-DELETE http://localhost:8000/menu-items/"1"
+DELETE http://localhost:8000/menu-items/1
 
 #---- Category---#
 ###
@@ -168,7 +168,7 @@ Content-Type: application/json
     "name": "soft drinks"
 }
 ###
-DELETE http://localhost:8000/categories/"1"
+DELETE http://localhost:8000/categories/1
 
 #---- Comments---#
 ###
@@ -196,7 +196,7 @@ Content-Type: application/json
     "commentsText": "Good"
 }
 ###
-DELETE http://localhost:8000/comments/"1"
+DELETE http://localhost:8000/comments/1
 
 #---- Address---#
 ###
@@ -226,4 +226,27 @@ Content-Type: application/json
     "fullname": "Alexa"
 }
 ###
-DELETE http://localhost:8000/addresses/"1"
+DELETE http://localhost:8000/addresses/1
+
+#---- City---#
+###
+GET http://localhost:8000/cities 
+###
+
+POST http://localhost:8000/cities
+Content-Type: application/json
+
+{
+    "name": "Nakuru",
+    "stateId": 2
+}
+
+###
+PUT http://localhost:8000/cities/4
+Content-Type: application/json
+
+{
+    "name": "Nairobi"
+}
+###
+DELETE http://localhost:8000/cities/5

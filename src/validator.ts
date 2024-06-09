@@ -107,3 +107,8 @@ export const menuItemSchema = z.object({
 export const categorySchema = z.object({
     name: z.string()
 })
+
+export const citySchema = z.object({
+    name: z.string(),
+    stateId: z.number()
+})
