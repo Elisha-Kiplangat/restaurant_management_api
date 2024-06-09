@@ -112,3 +112,12 @@ export const citySchema = z.object({
     name: z.string(),
     stateId: z.number()
 })
+
+export const orderMenuItemSchema = z.object({
+    order_id: z.number(),
+    menu_item_id: z.number(),
+    quantity: z.number(),
+    itemPrice: z.number(),
+    price: z.number(),
+    comment: z.string()
+})

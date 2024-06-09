@@ -250,3 +250,31 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/cities/5
+
+#---- Order menu item---#
+###
+GET http://localhost:8000/order-menu-items 
+###
+
+POST http://localhost:8000/order-menu-items
+Content-Type: application/json
+
+{
+    "order_id": 5,
+    "menu_item_id": 5,
+    "quantity": 5,
+    "itemPrice": 1000,
+    "price": 2000,
+    "comment": "great deal"
+}
+
+###
+PUT http://localhost:8000/order-menu-items/4
+Content-Type: application/json
+
+{
+    "quantity": 3,
+    "price": 3000
+}
+###
+DELETE http://localhost:8000/order-menu-items/5

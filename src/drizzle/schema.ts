@@ -80,7 +80,6 @@ export const addressTable = pgTable("address", {
     
 })
 
-// address table relation
 
 //Order menu item table
 
@@ -331,8 +330,8 @@ export type stateInsert = typeof stateTable.$inferInsert;
 export type addressselect = typeof addressTable.$inferSelect;
 export type addressInsert = typeof addressTable.$inferInsert;
 
-export type status_catalogselect = typeof statusCatalogTable.$inferSelect;
-export type status_catalogInsert = typeof statusCatalogTable.$inferInsert;
+export type statusCatalogselect = typeof statusCatalogTable.$inferSelect;
+export type statusCatalogInsert = typeof statusCatalogTable.$inferInsert;
 
 export type userselect = typeof userTable.$inferSelect;
 export type userInsert = typeof userTable.$inferInsert;
@@ -342,3 +341,6 @@ export type driverInsert = typeof driverTable.$inferInsert;
 
 export type commentselect = typeof CommentTable.$inferSelect;
 export type commentInsert = typeof CommentTable.$inferInsert;
+
+export type orderMenuItemselect = typeof order_menu_itemTable.$inferSelect;
+export type orderMenuItemInsert = typeof order_menu_itemTable.$inferInsert;

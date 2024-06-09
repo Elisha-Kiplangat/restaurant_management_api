@@ -2,14 +2,15 @@ import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import 'dotenv/config'
 import { restaurantRouter } from './restaurant/restaurant.router'
-import {userRouter} from './users/users.router'
-import {ordersRouter} from './orders/orders.router'
-import {stateRouter} from './state/state.router'
-import {menuItemRouter} from './menuItem/menuItem.router'
-import {categoryRouter} from './category/category.router'
-import {commentRouter} from './comments/comments.router'
-import {addressRouter} from './address/address.router'
-import {cityRouter} from './city/city.router'
+import { userRouter } from './users/users.router'
+import { ordersRouter } from './orders/orders.router'
+import { stateRouter } from './state/state.router'
+import { menuItemRouter } from './menuItem/menuItem.router'
+import { categoryRouter } from './category/category.router'
+import { commentRouter } from './comments/comments.router'
+import { addressRouter } from './address/address.router'
+import { cityRouter } from './city/city.router'
+import { orderMenuItemRouter } from './orderMenuItem/orderMenuItem.router'
 
 const app = new Hono()
 
@@ -34,6 +35,8 @@ app.route('/', commentRouter)
 app.route('/', addressRouter)
 
 app.route('/', cityRouter)
+
+app.route('/', orderMenuItemRouter)
 
 
 serve({
