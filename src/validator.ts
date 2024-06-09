@@ -51,3 +51,40 @@ export const addressSchema = z.object({
         message: 'Invalid date format for updatedAt',
     }).transform((val) => new Date(val))
 })
+
+export const restaurantSchema = z.object({
+    name: z.string(),
+    address: z.string(),
+    zip: z.number(),
+    cityId: z.number(),
+    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for createdAt',
+    }).transform((val) => new Date(val)),
+    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updatedAt',
+    }).transform((val) => new Date(val))
+})
+
+export const orderSchema = z.object({
+    restaurantId: z.number(),
+    estimatedDeliveryTime: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for delivery date',
+    }).transform((val) => new Date(val)),
+    actualDeliveryTime: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for actual delivery date',
+    }).transform((val) => new Date(val)),
+    deliveryAddressId: z.number(),
+    userId: z.number(),
+    driverId: z.number(),
+    price: z.number(),
+    discount: z.number(),
+    finalPrice: z.number(),
+    comment: z.string(),
+    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for createdAt',
+    }).transform((val) => new Date(val)),
+    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updatedAt',
+    }).transform((val) => new Date(val))
+})
+

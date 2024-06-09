@@ -5,7 +5,29 @@ GET http://localhost:8000/
 
 #---- Restaurant---#
 ###
-GET http://localhost:8000/restaurant
+GET http://localhost:8000/restaurants
+
+###
+POST http://localhost:8000/restaurants
+Content-Type: application/json
+
+{
+    "name": "example",
+    "address": "Kutus",
+    "zip": "10100",
+    "cityId": "Nyeri",
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+###
+PUT http://localhost:8000/restaurants/8
+Content-Type: application/json
+
+{
+    "name": "Hillton"
+}
+###
+DELETE http://localhost:8000/restaurants/7
 
 #---- Users---#
 ###
@@ -37,6 +59,36 @@ DELETE http://localhost:8000/users/7
 #---- Orders---#
 ###
 GET http://localhost:8000/orders
+
+###
+
+POST http://localhost:8000/orders
+Content-Type: application/json
+
+{
+    "restaurantId": "3",
+    "estimatesDeliveryTime": "2024-06-06",
+    "actualDeliveryTime": "2024-06-06",
+    "deliveryAddressId": "Kutus",
+    "userId": 3,
+    "driverId": 2,
+    "price": 1000,
+    "discount": 250,
+    "finalPrice": 750,
+    "comment": "great deal",
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+
+###
+PUT http://localhost:8000/orders/1
+Content-Type: application/json
+
+{
+    "price": "1200"
+}
+###
+DELETE http://localhost:8000/orders/"1"
 
 #---- States---#
 ###
