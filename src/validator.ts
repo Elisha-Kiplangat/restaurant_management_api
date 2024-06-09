@@ -103,3 +103,7 @@ export const menuItemSchema = z.object({
         message: 'Invalid date format for updatedAt',
     }).transform((val) => new Date(val))
 })
+
+export const categorySchema = z.object({
+    name: z.string()
+})

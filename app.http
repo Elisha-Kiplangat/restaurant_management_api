@@ -150,7 +150,25 @@ DELETE http://localhost:8000/menu-items/"1"
 
 #---- Category---#
 ###
-GET http://localhost:8000/category 
+GET http://localhost:8000/categories 
+###
+
+POST http://localhost:8000/categories
+Content-Type: application/json
+
+{
+    "name": "snacks"
+}
+
+###
+PUT http://localhost:8000/categories/1
+Content-Type: application/json
+
+{
+    "name": "soft drinks"
+}
+###
+DELETE http://localhost:8000/categories/"1"
 
 #---- Comments---#
 ###
